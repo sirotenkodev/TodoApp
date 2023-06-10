@@ -1,0 +1,42 @@
+<h1 style="text-align: center;">Список задач</h1>
+<br>
+<div class="container position-relative">
+  <div class="position-absolute top-0 start-50 translate-middle-x">
+    <div>
+
+      <div class="input-group">
+        <input type="text" class="form-control" [(ngModel)]="todo.taskName" placeholder="Todo">
+        <span class="input-group-btn">
+          <button class="btn btn-default" (click)="save()" type="button">Добавить</button>
+        </span>
+      </div>
+      <br>
+      <table class="table table-striped">
+        <tbody>
+          <tr *ngFor="let t of todos">
+            <ng-template [ngIf]="todo?.id != t.id" [ngIfElse]="edit">
+              <td>{{t?.taskName}}</td>
+              <td>
+                <button class="btn btn-sm btn-primary" (click)="editTodo(t)">Изменить</button>
+                <button class="btn btn-sm btn-danger" (click)="delete(t)">Удалить</button>
+              </td>
+            </ng-template>
+          </tr>
+        </tbody>
+      </table>
+
+    </div>
+  </div>
+</div>
+
+
+<!--шаблон для редактирования-->
+<ng-template #edit>
+  <td>
+    <input type="text" class="form-control" placeholder="Edit task" [(ngModel)]="todo.TaskName" />
+  </td>
+  <td>
+    <button class="btn btn-sm btn-success" (click)="save()">Сохранить</button>
+    <button class="btn btn-sm btn-warning" (click)="cancel()">Отмена</button>
+  </td>
+</ng-template>
