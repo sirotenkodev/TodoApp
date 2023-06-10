@@ -9,5 +9,6 @@ namespace TodoApp.Models
     {
         public int ID { get; set; }
         public string TaskName { get; set; }
+        public string TaskDescription { get; set; }
     }
 }

@@ -45,8 +45,4 @@ export class AppComponent implements OnInit {
         this.dataService.deleteProduct(t.id)
             .subscribe(data => this.loadProducts());
     }
-    add() {
-        this.cancel();
-        this.tableMode = false;
-    }
 }

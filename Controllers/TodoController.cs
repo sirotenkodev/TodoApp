@@ -33,8 +33,11 @@ namespace TodoApp.Controllers
         [HttpPost]
         public IActionResult Post(Todo todo)
         {
+            DateTime now = DateTime.Now;
+            
             if (ModelState.IsValid)
             {
+                todo.TaskDescription = now.ToString();
                 db.Todos.Add(todo);
                 db.SaveChanges();
                 return Ok(todo);
@@ -45,8 +48,11 @@ namespace TodoApp.Controllers
         [HttpPut]
         public IActionResult Put(Todo todo)
         {
+            DateTime now = DateTime.Now;
+
             if (ModelState.IsValid)
             {
+                todo.TaskDescription = now.ToString();
                 db.Update(todo);
                 db.SaveChanges();
                 return Ok(todo);
